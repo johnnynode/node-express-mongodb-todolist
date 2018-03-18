@@ -1,6 +1,6 @@
 module.exports = function (app) {
   app.get('/todo', (req, res) => {
-
+    res.render('todo');
   });
 
   app.post('/todo', (req, res)=> {
@@ -8,6 +8,6 @@ module.exports = function (app) {
   });
 
   app.delete('/todo', (req, res) => {
-
+    
   });
 }

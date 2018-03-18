@@ -3,7 +3,7 @@ var todoCtrl = require('./controllers/todoController');
 
 var app = express();
 
-app.set('view engine', 'ejs');
+app.set('view engine', 'ejs'); // 模型引擎 设置
 
 app.use(express.static('./public')); // 静态服务器
 todoCtrl(app);
