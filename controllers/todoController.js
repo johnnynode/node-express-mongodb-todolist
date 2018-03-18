@@ -12,27 +12,25 @@ var todoSchema = new Schema({
 
 var Todo = mongoose.model('Todo', todoSchema);
 
-var itemOne = Todo({item:"buy flowers"}).save((err)=>{
-  if(err) throw err;
-  console.log('item saved');
-})
-
-var data = [ {item: 'get milk'}, {item: "walk dog"}, {item: 'kick some coding ass'} ];
-
 module.exports = function (app) {
   app.get('/todo', (req, res) => {
-    res.render('todo', {todos:data});
+    Todo.find({}, (err, data)=>{
+      if(err) throw err;
+      res.render('todo', {todos:data});
+    });
   });
 
   app.post('/todo', urlencodedParser, (req, res)=> {
-    data.push(req.body);
-    res.json(data);
+    Todo(req.body).save((err, data)=> {
+      if(err) throw err;
+      res.json(data);
+    })
   });
 
   app.delete('/todo/:item', (req, res) => {
-    data = data.filter(function(todo) {
-      return todo.item.replace(/ /g, "-") !== req.params.item;
+    Todo.find({item: req.params.item.replace(/-/g, " ")}).remove((err, data) => {
+      if (err) throw err;
+      res.json(data);
     });
-    res.json(data);
   });
 }
