@@ -1,6 +1,22 @@
 var bodyParser = require('body-parser');
 var urlencodedParser = bodyParser.urlencoded({ extended: false });
 
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://joh:joh123456@ds117489.mlab.com:17489/todos');
+
+var Schema = mongoose.Schema;
+
+var todoSchema = new Schema({
+ item: String
+});
+
+var Todo = mongoose.model('Todo', todoSchema);
+
+var itemOne = Todo({item:"buy flowers"}).save((err)=>{
+  if(err) throw err;
+  console.log('item saved');
+})
+
 var data = [ {item: 'get milk'}, {item: "walk dog"}, {item: 'kick some coding ass'} ];
 
 module.exports = function (app) {
