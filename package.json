@@ -1,0 +1,25 @@
+{
+  "name": "node-express-mongodb-todolist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/johnnynode/node-express-mongodb-todolist.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/johnnynode/node-express-mongodb-todolist/issues"
+  },
+  "homepage": "https://github.com/johnnynode/node-express-mongodb-todolist#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "ejs": "^2.5.7",
+    "express": "^4.16.3"
+  }
+}
